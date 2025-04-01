@@ -14,6 +14,7 @@ interface Medication {
   frequency: string;
   startDate: string;
   status: "pending" | "completed";
+  nextDoseTime?: Date; 
 }
 
 export default function Schedule() {
@@ -65,7 +66,8 @@ export default function Schedule() {
     localStorage.setItem("medicationHistory", JSON.stringify([...history, historyEntry]));
   };
 
-  const formatNextDose = (date: Date) => {
+  const formatNextDose = (date: Date | undefined) => {
+    if (!date) return "Sin información"; 
     return date.toLocaleString('es-ES', {
       weekday: 'long',
       month: 'long',
