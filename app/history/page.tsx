@@ -58,7 +58,8 @@ export default function History() {
     const sortedHistory = Object.values(groupedHistory)
       .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-    setHistoryData(sortedHistory);
+      setHistoryData(sortedHistory as MedicationHistory[]);
+
   }, []);
 
   return (
